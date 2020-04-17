@@ -1,5 +1,6 @@
 // Handle different storage classes
 #![forbid(unsafe_code)]
+use log::info;
 use std::fmt;
 
 #[derive(Debug, PartialEq)]
@@ -64,7 +65,11 @@ impl From<&str> for StorageClass {
             "STANDARD_IA"         => Self::StandardIA,
 
             // Possible future types
-            unknown => Self::Unknown(unknown.to_string()),
+            unknown => {
+                info!("Encountered unknown StorageClass: {}", unknown);
+
+                Self::Unknown(unknown.to_string())
+            },
         }
     }
 }
