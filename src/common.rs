@@ -20,6 +20,10 @@ mod human_size;
 /// `SizeUnit` enum is used to select how the bucket sizes will be output.
 mod size_unit;
 
+/// `StorageClass` enum is used to indicate which storage class the usage in
+/// a bucket comes from.
+mod storage_class;
+
 /// `ObjectVersions` selects which S3 objects will be used when summing the
 /// size of the buckets.
 #[cfg(feature = "s3")]
@@ -31,6 +35,7 @@ pub use client_config::*;
 pub use client_mode::*;
 pub use human_size::*;
 pub use size_unit::*;
+pub use storage_class::*;
 
 #[cfg(feature = "s3")]
 pub use object_versions::*;
