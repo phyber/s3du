@@ -117,4 +117,27 @@ mod tests {
             assert_eq!(ret, expected);
         }
     }
+
+    #[test]
+    fn test_into_string() {
+        let tests = vec![
+            (StorageClass::DeepArchive,            "DeepArchive"),
+            (StorageClass::Glacier,                "Glacier"),
+            (StorageClass::IntelligentTiering,     "IntelligentTiering"),
+            (StorageClass::OneZoneIA,              "OneZoneIA"),
+            (StorageClass::ReducedRedundancy,      "ReducedRedundancy"),
+            (StorageClass::Standard,               "Standard"),
+            (StorageClass::StandardIA,             "StandardIA"),
+            (StorageClass::Unknown("test".into()), "test"),
+        ];
+
+        for test in tests {
+            let storage_class = test.0;
+            let expected      = test.1;
+
+            let ret = storage_class.to_string();
+
+            assert_eq!(ret, expected);
+        }
+    }
 }
